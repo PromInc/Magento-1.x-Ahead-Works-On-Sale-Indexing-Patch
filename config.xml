@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<PromInc_AwOnsale>
+			<version>1.0</version>
+		</PromInc_AwOnsale>
+	</modules>
+	<global>
+		<models>
+			<prominc_awonsale>
+				<class>PromInc_AwOnsale_Model</class>
+			</prominc_awonsale>
+		</models>
+
+		<events>
+			<sales_order_save_after>
+				<observers>
+					<onsale_sales_order_save_after>
+						<type>disabled</type>
+					</onsale_sales_order_save_after>
+				</observers>
+			</sales_order_save_after>
+		</events>
+	</global>
+
+	<crontab>
+		<jobs>
+			<prominc_awonsale_refreshindex>
+				<schedule>
+					<cron_expr>*/5 * * * *</cron_expr>
+				</schedule>
+				<run>
+					<model>prominc_awonsale/indexer::refreshIndex</model>
+				</run>
+			</prominc_awonsale_refreshindex>
+		</jobs>
+	</crontab>
+
+</config>
